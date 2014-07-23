@@ -1,0 +1,5 @@
+{% if test_city.name == "dummy" %}
+	{"response":404,"message":"error"} 
+{% else %} 
+	{"response":200","message":"ok","data": {"name":"{{ test_city.name }}"} }
+{% endif %} 
