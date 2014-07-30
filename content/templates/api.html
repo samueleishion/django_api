@@ -1,5 +1,31 @@
-{% if test_city.name == "dummy" %}
+{{ json_str }}
+
+
+
+<!-- {% if test_city.name == "api" %}
 	{"response":404,"message":"error"} 
 {% else %} 
 	{"response":200","message":"ok","data": {"name":"{{ test_city.name }}"} }
-{% endif %} 
+{% endif %}  -->
+
+
+
+
+<!-- {% if type == "cities" %}
+	getting cities by {{ city_req }}: {{ city_id }}
+	{% if city_req == "id" %}
+		by id {{ city_id }}
+	{% elif city_req == "name" %}
+		by name {{ city_id }}
+	{% elif cty_req == "all" %}
+		list of all cities 
+	{% else %}
+		error 
+	{% endif %}
+{% elif type == "languages" %} 
+	getting langauges by {{ lang_req }}: {{ lang_id }}
+{% elif type == "activities" %} 
+	getting activities by {{ acts_req }}: {{ acts_id }}
+{% else %} 
+	other {{ type }} 
+{% endif %} -->

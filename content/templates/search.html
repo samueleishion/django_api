@@ -1,0 +1,57 @@
+{% if blank %}
+<input type="text" placeholder="search" name="search" id="search">
+{% else %}
+<input type="text" placeholder="search" name="search" id="search" value="{{ query }}"><br>
+results for: {{ query }}
+<div class="results">
+
+	{% if cbool %}
+		<h3>cities ({{ ccount }})</h3>
+		{% for c in cities %}
+			<div>
+				<a href="http://127.0.0.1:8000/api/cities/{{ c.id }}">{{ c.name }}</a>
+				<p>{{ c.description }}</p>
+			</div>
+		{% endfor %}
+	{% endif %} 
+
+	{% if abool %}
+		<h3>activities ({{ acount }})</h3>
+		{% for a in activities %}
+			<div>
+				<a href="http://127.0.0.1:8000/api/activities/{{ a.id }}">{{ a.name }}</a>
+				<p>{{ a.description }}</p>
+			</div>
+		{% endfor %}
+	{% endif %}
+
+	{% if lbool %}
+		<h3>langauges ({{ lcount }})</h3>
+		{% for l in languages %}
+			<div>
+				<a href="http://127.0.0.1:8000/api/languages/{{ l.id }}">{{ l.name }}</a>
+				<p>{{ l.description }}</p>
+			</div>
+		{% endfor %}
+	{% endif %} 
+</div> 
+{% endif %}
+
+<script src="http://code.jquery.com/jquery.min.js"></script>
+<script>
+
+$('#search').on("keyup",function(e) {
+	if(e.which==13) {
+		// console.log( "going to full search: "+$('#search').val() ); 
+		window.location ="http://127.0.0.1:8000/search/"+$('#search').val(); 
+	}
+	// console.log( $('#search').val() ); 
+}); 
+
+</script>
+<style>
+* { padding:10px; }
+a { color:#00f; }
+h3 { border-top:1px solid #777; }
+.results div:hover { background-color:#eee; }
+</style> 

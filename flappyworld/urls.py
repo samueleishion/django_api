@@ -8,7 +8,21 @@ urlpatterns = [
 
     url(r'^admin/', include(admin.site.urls)),
     url(r'^$', 'content.views.index', name="index"), 
-    url(r'^api/', 'content.views.api', name="api"), 
-    url(r'^api/languages/<languages_id>[0-9]$', 'content.views.api', name="api"), 
-    # url(r'^api/city/(?P<city_id>\d+)/$', views.api, name='detail'), 
+
+    # search 
+    url(r'^search/$','content.views.search'), 
+    url(r'^search/(?P<query>[a-zA-Z0-9-\s]+)/$','content.views.search'), 
+
+    # api 
+    url(r'^api/$', 'content.views.api', name="api"), 
+
+    # list of all objects 
+    url(r'^api/cities/$', 'content.views.api_cities', name="api"), 
+    url(r'^api/languages/$', 'content.views.api_languages', name="api"), 
+    url(r'^api/activities/$', 'content.views.api_activities', name="api"), 
+
+    # particular objects 
+    url(r'^api/cities/(?P<city_id>[a-zA-Z0-9-\s]+)/$', 'content.views.api_cities', name="api"), 
+    url(r'^api/languages/(?P<lang_id>[a-zA-Z0-9-\s]+)/$', 'content.views.api_languages', name="api"), 
+    url(r'^api/activities/(?P<acts_id>[a-zA-Z0-9-\s]+)/$', 'content.views.api_activities', name="api"),  
 ]
